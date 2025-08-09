@@ -31,7 +31,14 @@ const users = [
 let ans = nameFun(users);
 console.log(ans);
 
-// using filter function 
+// using filter function and map function 
+
+// The filter() method creates a new array containing only the elements from the original array that satisfy a provided test condition.
+// It iterates through each element, and if the callback function returns true for that element, it is included in the new array; 
+// otherwise, it is excluded.
+
+// The map() method creates a new array by applying a provided function to each element of the original array. 
+// It transforms each element based on the logic within the callback function and collects the results into a new array of the same length as the original. 
 
 const ans2 = users.filter(users=> users.age>=18 && users.gender==="male").map(users=> users.name);
 
