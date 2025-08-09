@@ -1,0 +1,156 @@
+body{
+    background-color: rgb(13, 17, 23);
+}
+
+button {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: gray;
+    color: var(--button-secondary-foreground);
+    border: 1px solid var(--button-secondary-border);
+    text-decoration: none;
+    
+}
+.three-col-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body{
+    background: #0e0e0e;
+}
+.icons{
+    text-decoration: none;
+    color: rgb(184, 181, 181);
+    cursor: pointer;
+    font-weight: 600;
+    padding-inline: 5px;
+    
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 150px;
+    padding-right: 150px;
+    background: #0e0e0e;
+    
+}
+.headerleft{
+    padding-bottom: 8px;
+}
+.headerright{
+    padding-top: 8px;
+    button{
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    input{
+        border-radius: 4px;
+        font-size: 15px;
+    }
+    
+}
+.mainbody{
+    
+    color: rgb(164, 169, 174);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.maintext{
+    padding-top: 40px;
+    color: rgb(228, 228, 244);
+    text-align: center;
+    
+}
+.buttonarea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .button1{
+        background-color: blue; 
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 5px;
+                border-radius: 5px;
+    }
+    .button2{
+        background-color: rgb(179, 179, 186); 
+                border: none;
+                color: #ffffff;
+                background-color: #302c2c;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 5px;
+                border-radius: 5px;
+    }
+    
+} */
