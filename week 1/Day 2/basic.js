@@ -75,4 +75,4 @@ let user = {
     gander: "male"
 }
 
-console.log(user.name+"age is "+user.age);
+console.log(user.name+" age is "+user.age);
