@@ -3,7 +3,7 @@ const fs = require("fs");
 
 
 function readTheFile(sentTheFinalValueHere){
-    fs.readFile("a.txt","utf-8", function(err, data){
+    fs.readFile("./week 2-Async-promise/Day 4/a.txt","utf-8", function(err, data){
         sentTheFinalValueHere(data);
     });
 }
@@ -15,7 +15,7 @@ function readFile( fileName){
 
 
 // using the promise 
-const p = readFile();
+const p = readFile("./week 2-Async-promise/Day 4/a.txt");
 
 function callback(content){
     console.log(content); 

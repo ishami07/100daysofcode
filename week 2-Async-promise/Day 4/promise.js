@@ -24,14 +24,14 @@
 
 // creating promisefied verssion of the setTimeOut function 
 
-function random(resolve){
-    setTimeout(resolve,3000);
-}
+// function random(resolve){
+//     setTimeout(resolve,3000);
+// }
 
-const p = new Promise(random);
+// const p = new Promise(random);
 
-function callback(){
-    console.log("promise suceed !");
-}
+// function callback(){
+//     console.log("promise suceed !");
+// }
 
-p.then(callback);
+// p.then(callback);
