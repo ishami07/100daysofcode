@@ -13,7 +13,6 @@ function readFile( fileName){
     return new Promise(readTheFile);
 }
 
-
 // using the promise 
 const p = readFile("./week 2-Async-promise/Day 4/a.txt");
 
