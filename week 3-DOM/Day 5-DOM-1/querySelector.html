@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDO List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <h4 id="todo1">1. hi</h4>
+    <h4 id="todo2">2. hi</h4>
+    <h4 id="todo3">3. hello</h4>
+    <h4 id="todo4">4. hi there</h4>
+    <div>
+        <input type="text">
+        <button onclick="addTodo()">Add Todo</button>
+    </div>
+ 
+    <script>
+        function addTodo(){
+            // querySelector
+            const inputEl1= document.querySelector("input");
+            const inputValue = inputEl1.value;
+            console.log(inputValue);
+        }
+        
+        // querySelectorAll
+        const inputEl2 = document.querySelectorAll("h4")[2];
+        console.log(inputEl2);
+
+        // getElementById
+        const inputEl3 = document.getElementById("todo3");
+        console.log(inputEl3);
+    </script>
+</body>
+</html>
+
+
+
+<!-- 
+Fetching elements
+
+There are 5 popular methods available for fetching DOM elements - 
+- querySelector
+- querySelectorAll
+- getElementById
+- getElementByClassName
+- getElementsByClassName -->

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width">
+	  <title>Todo update</title>
+	  
+      <script>
+      
+      </script>
+	</head>
+	
+	<body>
+	  <h1>Todo list</h1>
+
+      <div id="todo">
+        <div id="todo-1" style="display: flex; align-items: center;">
+            <h4>hi there</h4>
+            <button onclick="deleteTodo(1)" style="height: 20px; ">delete</button>
+        </div>
+        
+        <div id="todo-2" style="display: flex; align-items: center;">
+            <h4>hello</h4>
+             <button onclick="deleteTodo(2)" >delete</button>
+        </div>
+        
+        <div id="todo-3" style="display: flex; align-items: center;">
+            <h4 id="todo-3">hi</h4>
+             <button onclick="deleteTodo(3)" >delete</button>
+        </div>
+       
+        <div id="todo-4" style="display: flex; align-items: center;">
+            <h4>it's time to code</h4>
+             <button onclick="deleteTodo(4)" >delete</button>
+        </div>
+      </div>
+	  <br>
+	  <div>
+	    <input id="input" type="text"></input>
+	    <button onclick="addTodo()">Add Todo</button>
+	  </div>
+
+
+      <script>
+        
+        function deleteTodo(index){
+            const element = document.getElementById("todo-"+index);
+            element.parentNode.removeChild(element);
+        }
+
+
+        function addTodo(){
+            const newTodo = document.getElementById("input");              
+            const textNode = document.createElement("h4");
+            textNode.innerHTML = newTodo.value;
+            const parentEl = document.getElementById("todo");
+            parentEl.appendChild(textNode);
+            newTodo.value = "";
+        }
+      </script>
+	  
+	</body>
+	
+</html> 
+

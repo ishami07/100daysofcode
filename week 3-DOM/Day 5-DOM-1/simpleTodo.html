@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="todos">
+        <input type=" text" id="input" placeholder="enter the Todo ">
+        <button id="btn" onclick="addTodo()">Add Todo</button>
+    </div>
+    
+    <script>
+        let count = 1;
+        function addTodo(){
+            const textEl = document.getElementById("input");
+            const text = textEl.value;
+            const newTodo = document.createElement("h4");
+            newTodo.innerHTML = text ;
+            const parentEl = document.getElementById("todos");
+            parentEl.appendChild(newTodo);
+            textEl.value="";
+
+        }
+    </script>
+</body>
+</html>
+
+"<h4>" + value + '</h4><button onclick="deleteTodo('+ count +')">delete</button>';
