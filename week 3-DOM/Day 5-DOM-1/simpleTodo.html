@@ -17,15 +17,22 @@
         function addTodo(){
             const textEl = document.getElementById("input");
             const text = textEl.value;
-            const newTodo = document.createElement("h4");
-            newTodo.innerHTML = text ;
+            const newTodo = document.createElement("div");
+            newTodo.setAttribute("id",count);
+            newTodo.innerHTML = "<h4>" + text + '</h4><button onclick="deleteTodo('+ count +')">delete</button>'; ;
             const parentEl = document.getElementById("todos");
             parentEl.appendChild(newTodo);
             textEl.value="";
+            count=count+1;
+
+        }
+
+        function deleteTodo(count){
+            const deleteEl = document.getElementById(count);
+            deleteEl.parentNode.removeChild(deleteEl);
 
         }
     </script>
 </body>
 </html>
 
-"<h4>" + value + '</h4><button onclick="deleteTodo('+ count +')">delete</button>';
