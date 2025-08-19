@@ -6,23 +6,64 @@
     <title>Document</title>
 </head>
 <body>
-  <input type="text"></input>
+  <h1 style="font-style: italic;">Todo list</h1>
+  <input type="text" placeholder="Enter you todo here "></input>
   <button onclick="addTodo()">Add todo!</button>
+  <button onclick="deleteLast()">Delete last Todo</button>
+  <button onclick="deleteFirst()">Delete First Todo</button>
+  <div id="todosList"> </div>
+
+
+
   <script>
     let todos = [];
+    // add todp
     function addTodo() {
+      if(document.querySelector("input").value===""){
+        alert("Enter valid Todo");
+        return ;
+      }
       todos.push({
         title: document.querySelector("input").value
       })
       render();
     }
+
+    // delete todo
     function deleteTodo(index) {
       todos.splice(index, 1);
+      // todos.pop();
       render();
-    }                                   
+    }  
+
+    // delete last todo
+    function deleteLast(){
+      todos.pop();
+      render();
+    }   
+      
+    // delete first todo
+    function deleteFirst(){
+      todos.shift();
+      render();
+    }                   
+    
+    // render function
     function render() {
+      document.getElementById("todosList").innerHTML="";
       for(let i=0; i<todos.length; i++){
         const todo = todos[i];
+        const divEl = document.createElement("div");
+        const h2El = document.createElement("h2");
+        const buttonEl = document.createElement("button");
+        buttonEl.innerHTML="Delete";
+        buttonEl.setAttribute("onclick","deleteTodo("+i+")");
+        h2El.innerHTML = todo.title;
+        divEl.appendChild(h2El);
+        divEl.appendChild(buttonEl);
+        document.getElementById("todosList").appendChild(divEl);
+        document.querySelector("input").value="";
+        
       } 
 
     }
