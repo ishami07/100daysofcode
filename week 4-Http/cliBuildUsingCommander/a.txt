@@ -1,0 +1,4 @@
+hi there its me from a.txt learning how to use commander to build cli 
+kya hal h bhai 
+lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+eiusmod tempor incididunt ut labore et dolore magna aliqua.
