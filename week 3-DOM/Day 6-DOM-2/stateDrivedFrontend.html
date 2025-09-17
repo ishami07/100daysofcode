@@ -1,17 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      color: #e5e2e2;
+    }
+
+    #container {
+      width: 90%;
+      max-width: 600px;
+      margin-top: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    #maiheading h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+
+    #inputContainer {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    #inputContainer input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    #inputContainer button {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #ff7eb3;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #inputContainer button:hover {
+      background: #ff5c9d;
+      transform: scale(1.05);
+    }
+
+    #todosList {
+      margin-top: 20px;
+    }
+
+    .todo-item {
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .todo-item:hover {
+      transform: translateX(5px);
+      background: rgba(255,255,255,0.3);
+    }
+
+    .todo-item h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #fff;
+      word-break: break-word;
+    }
+
+    .todo-item button {
+      background: #ff4e50;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .todo-item button:hover {
+      background: #ff1a1a;
+    }
+
+    h3 {
+      text-align: center;
+      font-weight: normal;
+      color: #ddd;
+    }
+  </style>
+  <style>
+    /* Reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      padding: 28px;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+      color: #fff;
+    }
+
+    #container {
+      width: 94%;
+      max-width: 760px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.28);
+      backdrop-filter: blur(6px);
+    }
+
+    #maiheading h1 {
+      font-style: italic;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.6px;
+    }
+
+    /* input row */
+    #inputContainer {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    #todoForm { display: flex; gap: 10px; align-items: center; flex: 1 1 auto; flex-wrap: wrap; }
+
+    #todoInput {
+      flex: 1 1 260px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      min-width: 140px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .12s ease, opacity .12s ease;
+      min-width: 120px;
+    }
+    button:active { transform: translateY(1px); }
+
+    .btn-add { background: linear-gradient(90deg,#ff8da3,#ff5f86); color: #fff; }
+    .btn-last { background: linear-gradient(90deg,#ffd48a,#ffb25e); color: #2b170a; }
+    .btn-first{ background: linear-gradient(90deg,#9be3ff,#5ab4ff); color:#042034; }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* todos */
+    #todosList { margin-top: 6px; }
+
+    .todo-item {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.05);
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: transform .14s ease, background .14s ease;
+      word-break: break-word;
+    }
+    .todo-item:hover { transform: translateX(6px); background: rgba(255,255,255,0.08); }
+
+    .todo-item h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-right: 10px;
+      flex: 1 1 auto;
+    }
+
+    .delete-btn {
+      background: linear-gradient(90deg,#ff7b7b,#ff4545);
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      min-width: 86px;
+    }
+    .delete-btn:active { transform: translateY(1px); }
+
+    h3.empty {
+      text-align: center;
+      color: #e6e6e6;
+      font-weight: 500;
+      padding: 16px 6px;
+    }
+
+    /* small screens */
+    @media (max-width: 520px) {
+      #container { padding: 14px; }
+      #maiheading h1 { font-size: 1.4rem; }
+      .controls { width: 100%; justify-content: space-between; gap: 8px; }
+      button { min-width: 48%; }
+      #todoForm { width: 100%; }
+      .todo-item { flex-direction: column; align-items: stretch; gap: 8px; }
+      .delete-btn { align-self: flex-end; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="maiheading">
+      <h1>Todo List</h1>
+    </div>
+    <div id="inputContainer">
+      <input type="text" placeholder="Enter your todo here">
+      <button onclick="addTodo()">Add</button>
+      <button onclick="deleteLast()">Delete Last</button>
+      <button onclick="deleteFirst()">Delete First</button>
+    </div>
+    <div id="todosList">
+      <h3>Your todo list is empty</h3>
+    </div>
+  </div>
+
+  <script>
+    let todos = [];
+
+    function addTodo() {
+      const input = document.querySelector("input");
+      if (input.value === "") {
+        alert("Enter valid Todo");
+        return;
+      }
+      todos.push({ title: input.value });
+      input.value = "";
+      render();
+    }
+
+    function deleteTodo(index) {
+      todos.splice(index, 1);
+      render();
+    }
+
+    function deleteLast() {
+      todos.pop();
+      render();
+    }
+
+    function deleteFirst() {
+      todos.shift();
+      render();
+    }
+
+    function render() {
+      const list = document.getElementById("todosList");
+      list.innerHTML = "";
+
+      if (todos.length === 0) {
+        list.innerHTML = "<h3>Your todo list is empty</h3>";
+        return;
+      }
+
+      todos.forEach((todo, i) => {
+        const divEl = document.createElement("div");
+        divEl.className = "todo-item";
+
+        const h2El = document.createElement("h2");
+        h2El.innerText = todo.title;
+
+        const buttonEl = document.createElement("button");
+        buttonEl.innerText = "Delete";
+        buttonEl.onclick = () => deleteTodo(i);
+
+        divEl.appendChild(h2El);
+        divEl.appendChild(buttonEl);
+        list.appendChild(divEl);
+      });
+    }
+  </script>
+</body>
+</html> 
+
+
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      body{
+        background-color: rgb(142, 142, 142);
+      }
+      #container{
+        width: auto;
+        height: auto;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #inputContainer{
+        width: auto;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+        
+        
+    </style>
 </head>
 <body>
-  <h1 style="font-style: italic;">Todo list</h1>
-  <input type="text" placeholder="Enter you todo here "></input>
-  <button onclick="addTodo()">Add todo!</button>
-  <button onclick="deleteLast()">Delete last Todo</button>
-  <button onclick="deleteFirst()">Delete First Todo</button>
-  <div id="todosList"> </div>
+  <div id="container">
+    <div id="maiheading">
+      <h1 style="font-style: italic;">Todo list</h1>
+    </div>
+    <div id="inputContainer">
+      <input type="text" placeholder="Enter you todo here "></input>
+      <button onclick="addTodo()">Add todo!</button>
+      <button onclick="deleteLast()">Delete last Todo</button>
+      <button onclick="deleteFirst()">Delete First Todo</button>
+    </div>
+    <div id="todosList">
+      <h3>your todo is empty</h3>
+    </div>
+  </div>
 
 
 
@@ -69,4 +432,4 @@
     }
   </script>
 </body>
-</html>
+</html> -->
